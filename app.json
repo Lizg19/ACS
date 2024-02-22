@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "appAcertijo",
+    "slug": "appAcertijo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "appAcertijo"
+}
