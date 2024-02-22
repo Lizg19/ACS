@@ -145,7 +145,7 @@ function RiddleScreen({ navigation }) {
     }
     console.log('info', variable);
     try {
-      const collectionRef = collection(firestore, '/users/'+user.uid+'/history');
+      const collectionRef = collection(firestore, '/users/' + user.uid + '/history');
       const addedDocument = await addDoc(collectionRef, variable);
       console.log('Documento agregado con ID:', addedDocument.id);
       setSegundos(0);

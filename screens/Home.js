@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View ,Image,SafeAreaView, TextInput,Button, Alert,KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView, TextInput, Button, Alert, KeyboardAvoidingView } from 'react-native';
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { app } from './../firebase-config';
 
-function LoginScreen({navigation}) {
+function LoginScreen({ navigation }) {
   const [emailUser, setEmailUser] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -20,30 +20,30 @@ function LoginScreen({navigation}) {
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, emailUser, password)
-    .then((userCredential) => {
-      console.log('Cuenta iniciada correctamente')
-      const user = userCredential.user;
-      console.log(user)
-      navigation.navigate('Welcome');
-    })
-    .catch(error => {
-      console.log('--',error)
-      if (error.code === 'auth/invalid-email') {
-        Alert.alert('Correo electrónico no válido.');
-      }else if(error.code === 'auth/invalid-credential'){
-        Alert.alert('Contraseña incorrecta.');
-      }
-    })
+      .then((userCredential) => {
+        console.log('Cuenta iniciada correctamente')
+        const user = userCredential.user;
+        console.log(user)
+        navigation.navigate('Welcome');
+      })
+      .catch(error => {
+        console.log('--', error)
+        if (error.code === 'auth/invalid-email') {
+          Alert.alert('Correo electrónico no válido.');
+        } else if (error.code === 'auth/invalid-credential') {
+          Alert.alert('Contraseña incorrecta.');
+        }
+      })
   }
 
   return (
     <KeyboardAvoidingView
-    behavior="position"
-    style={styles.container}
+      behavior="position"
+      style={styles.container}
     >
-      <View style={{backgroundColor: '#fff',height:'100%'}}>
-        <Text style={{paddingTop:60, fontSize:20, textAlign: 'center'}}>¡BIENVENIDOS!</Text>
-        <View style={{justifyContent:'center',alignItems: 'center'}}>
+      <View style={{ backgroundColor: '#fff', height: '100%' }}>
+        <Text style={{ paddingTop: 60, fontSize: 20, textAlign: 'center' }}>¡BIENVENIDOS!</Text>
+        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
           <Image
             style={styles.stretch}
             source={{
@@ -51,31 +51,31 @@ function LoginScreen({navigation}) {
             }}
           />
         </View>
-        <Text style={{paddingTop:5,paddingBottom:20, fontSize:20, textAlign: 'center'}}>Al mejor acertijo.</Text>
-        <View style={{ borderWidth: 1,borderColor:'#48B3FF',backgroundColor:'#48B3FF',borderRadius:15,marginHorizontal:10,paddingBottom:20, paddingTop:20}}>
-          <SafeAreaView style={{paddingBottom:20}}>
+        <Text style={{ paddingTop: 5, paddingBottom: 20, fontSize: 20, textAlign: 'center' }}>Al mejor acertijo.</Text>
+        <View style={{ borderWidth: 1, borderColor: '#48B3FF', backgroundColor: '#48B3FF', borderRadius: 15, marginHorizontal: 10, paddingBottom: 20, paddingTop: 20 }}>
+          <SafeAreaView style={{ paddingBottom: 20 }}>
             <TextInput
               style={styles.input}
               onChangeText={(text) => setEmailUser(text)}
               placeholder="Ingrese su correo electrónico"
-              placeholderTextColor="#fff" 
+              placeholderTextColor="#fff"
             />
             <TextInput
               style={styles.input}
               onChangeText={(text) => setPassword(text)}
               placeholder="Ingrese su contraseña"
-              placeholderTextColor="#fff" 
+              placeholderTextColor="#fff"
               secureTextEntry={true}
             />
           </SafeAreaView>
-          <View style={{ marginHorizontal:10}}>
+          <View style={{ marginHorizontal: 10 }}>
             <Button
               onPress={handleSignIn}
               title="Iniciar Sesión"
               color="#24D274"
             />
           </View>
-          <View style={{ marginHorizontal:10, paddingTop:15}}>
+          <View style={{ marginHorizontal: 10, paddingTop: 15 }}>
             <Button
               onPress={handleNewccount}
               title="Crear cuenta"
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
-    borderColor:'#fff',
+    borderColor: '#fff',
     padding: 10,
   },
 });

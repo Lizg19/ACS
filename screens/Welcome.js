@@ -92,22 +92,22 @@ function WelcomeScreen({ navigation }) {
     setMostrarCalificar(false);
   };
 
-  const calificar = async() => {
-    if(calificacion== 1 || calificacion==2 || calificacion==3 || calificacion==4){
+  const calificar = async () => {
+    if (calificacion == 1 || calificacion == 2 || calificacion == 3 || calificacion == 4) {
       const variable = {
         'score': calificacion,
         'createAt': new Date()
       }
 
       try {
-        const collectionRef = collection(firestore, '/users/'+user.uid+'/mark');
+        const collectionRef = collection(firestore, '/users/' + user.uid + '/mark');
         const addedDocument = await addDoc(collectionRef, variable);
         // console.log('Documento agregado con ID:', addedDocument.id);
         Alert.alert('Calificación enviada correctamente.')
       } catch (error) {
         console.error('Error al agregar el documento:', error);
       }
-    }else{
+    } else {
       Alert.alert('Calificación fuera de rango.')
     }
   };
@@ -221,8 +221,8 @@ function WelcomeScreen({ navigation }) {
             <TouchableOpacity onPress={closeCalificar}>
               <Text style={styles.close}>&times;</Text>
             </TouchableOpacity>
-            <View style={{ marginHorizontal:10,paddingBottom:20, paddingTop:20}}>
-              <SafeAreaView style={{paddingBottom:20}}>
+            <View style={{ marginHorizontal: 10, paddingBottom: 20, paddingTop: 20 }}>
+              <SafeAreaView style={{ paddingBottom: 20 }}>
                 <Text style={{ fontSize: 16 }}>Califique la aplicación rango del 1 al 4</Text>
                 <Text style={{ fontSize: 16 }}>1: Muy fácil, 2: Fácil, 3: Difícil, 4: Muy difícil</Text>
 
@@ -230,17 +230,17 @@ function WelcomeScreen({ navigation }) {
                   style={styles.input}
                   onChangeText={(text) => setCalificacion(text)}
                   placeholder="Ingrese la calificación"
-                  placeholderTextColor="black" 
+                  placeholderTextColor="black"
                 />
               </SafeAreaView>
-              <View style={{ marginHorizontal:10}}>
+              <View style={{ marginHorizontal: 10 }}>
                 <Button
                   onPress={calificar}
                   title="Enviar"
                   color="#24D274"
                 />
               </View>
-              
+
             </View>
           </View>
         </View>
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
 
     maxHeightheight: 300
   },
-  
+
   text: { margin: 6 },
   container2: {
     flex: 1,
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
-    borderColor:'black',
+    borderColor: 'black',
     padding: 10,
   },
 });

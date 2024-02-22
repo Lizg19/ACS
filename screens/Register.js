@@ -91,6 +91,8 @@ function RegisterScreen({navigation}) {
                     placeholder="Ingrese su contraseña"
                     placeholderTextColor="#fff" 
                     secureTextEntry={true}
+
+                    
                 />
                 
                 </SafeAreaView>
