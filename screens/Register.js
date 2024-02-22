@@ -76,7 +76,7 @@ function RegisterScreen({navigation}) {
                     onChangeText={(text) => setPhone(text)}
                     placeholder="Ingrese su número de teléfono"
                     placeholderTextColor="#fff" 
-                    keyboardType="phone-pad"
+                    keyboardType="phone-pad"  
                 />
                 <TextInput
                     style={styles.input}
